@@ -10,7 +10,9 @@ def create_app(config_class=Config):
     from app.api import api
     app.register_blueprint(api)
 
+    fmt = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
     stream_handler = logging.StreamHandler()
+    stream_handler.setFormatter(fmt)
     stream_handler.setLevel(logging.INFO)
     app.logger.addHandler(stream_handler)
     
